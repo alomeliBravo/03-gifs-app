@@ -11,6 +11,7 @@ export class SidebarComponent {
 
   constructor ( private gifsService: GifsService ){}
 
+  //Metodo getter para obtener el tagHistory
   get tagsList(): string[] {
     return this.gifsService.tagsHistory;
   }
