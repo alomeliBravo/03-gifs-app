@@ -15,17 +15,27 @@ import { GifsService } from '../../services/gifs.service';
   `
 })
 
+//#txtTagInput es una variable de referencia
+
 export class SearchBoxComponent {
+
+  //Viewchild permite que accedamos a ese elemetno del DOM
   @ViewChild('txtTagInput')
+  //ElementRef es una clase de Angular que permite envolver elementos HTML y hacer referencia a ellos
+  //Desde el componente donde se renderizan
   public tagInput!: ElementRef<HTMLInputElement>
 
   constructor(private gifsService: GifsService) { }
 
+
   searchTag () {
+    //Obtenemos el valor del input y se guarda en newTag
     const newTag = this.tagInput.nativeElement.value;
 
+    //Se llama al metodo searchTag y pasamos newTag
     this.gifsService.searchTag(newTag);
 
+    //Se limpia el input
     this.tagInput.nativeElement.value = '';
   }
 }
