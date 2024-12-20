@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 
 @Component({
   standalone: false,
@@ -7,12 +7,21 @@ import { Component, OnInit } from '@angular/core';
     <h5>Buscar:</h5>
     <input type="text"
     class="form-control"
-    placeholder="Buscar gifs...">
-  `,
+    placeholder="Buscar gifs..."
+    (keyup.enter)="searchTag()"
+    #txtTagInput
+    >
+  `
 })
 
 export class SearchBoxComponent {
+  @ViewChild('txtTagInput')
+  public tagInput!: ElementRef<HTMLInputElement>
+
   constructor() { }
 
-  ngOnInit() { }
+  searchTag () {
+    const newTag = this.tagInput.nativeElement.value;
+    console.log({ newTag })
+  }
 }
