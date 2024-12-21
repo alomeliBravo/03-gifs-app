@@ -1,6 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Gif, SearchResponse } from '../interfaces/gifs.interfaces';
+import { JsonPipe } from '@angular/common';
 
 @Injectable({providedIn: 'root'})
 export class GifsService {
@@ -35,8 +36,12 @@ export class GifsService {
 
     //Evita que existan más de 10 elementos en el arreglo
     this._tagsHistory = this._tagsHistory.splice(0,10);
+    this.saveLocalStorage();
   }
 
+  private saveLocalStorage():void {
+    localStorage.setItem('history', JSON.stringify( this._tagsHistory ));
+  }
 
   searchTag( tag: string ):void {
     //Si el tag es un string vacío no hará anda
