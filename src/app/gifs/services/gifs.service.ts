@@ -58,7 +58,6 @@ export class GifsService {
     this.http.get<SearchResponse>(`${ this.serviceUrl }/search`, { params } )
       .subscribe( (resp) => {
         this.gifList = resp.data;
-        console.log({ gifs: this.gifList });
       } );
 
     //Obtiene la data de la API, se suscribe porque es un observable y todo el rato
