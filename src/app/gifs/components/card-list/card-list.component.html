@@ -4,7 +4,13 @@
   <div *ngFor="let gif of gifs" class="col-md-3 col-sm-6">
 
     <div class="text-center card mb-2 bg-dark">
-      <!-- TODO: Crear imagen -->
+
+      <!-- Cuando queremos poner un valor de una propiedad como una expresión
+      de JS se coloca en llaves cuadradas -->
+      <img
+      [src]="gif.images.downsized_medium.url"
+      [alt]="gif.title"
+      class="card-img-top">
 
       <div class="card-body text-white">
         <p class="card-text">
